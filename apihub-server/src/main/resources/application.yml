@@ -1,0 +1,26 @@
+server:
+  port: 4629
+spring:
+  messages:
+    encoding: utf-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  data:
+    mongodb:
+      uri: mongodb://test:123456@localhost:27017/aiyahuger
+  servlet:
+      multipart:
+        max-file-size: 2mb
+        max-request-size: 5mb
+        resolve-lazily: true
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+logging:
+  path: g:/home/apihub/service/logs
+
+app:
+  response:
+    access-control-allow-origin: "*"
