@@ -19,6 +19,7 @@ import java.util.Map;
  * Created by zhouwenqi on 2019/1/24.
  */
 @RestController
+@RequestMapping
 public class ErrorController extends BasicErrorController {
     public ErrorController(){
         super(new DefaultErrorAttributes(),new ErrorProperties());

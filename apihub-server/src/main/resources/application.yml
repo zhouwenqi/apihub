@@ -10,12 +10,8 @@ spring:
     default-property-inclusion: non_null
   data:
     mongodb:
-      uri: mongodb://test:123456@localhost:27017/aiyahuger
-  servlet:
-      multipart:
-        max-file-size: 2mb
-        max-request-size: 5mb
-        resolve-lazily: true
+      uri: mongodb://test:123456@localhost:27017/apihub
+
   resources:
     static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
 logging:
@@ -24,3 +20,8 @@ logging:
 app:
   response:
     access-control-allow-origin: "*"
+  smtp:
+    host: smtp.microwarp.com
+    port: 25
+    username: apihub@microwarp.com
+    password: Zwq#888888
