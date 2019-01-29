@@ -1,4 +1,4 @@
-package com.zhouwenqi.apihub.model.response;
+package com.zhouwenqi.apihub.core.model.response;
 
 /**
  * 返回状态码
@@ -19,4 +19,6 @@ public class ResultCode {
     public static int RESULT_TOKEN_ERROR = 901;
     // 权限不够
     public static int RESULT_NOT_AUTHORITY = 902;
+    // 拒绝访问
+    public static int RESULT_ACCESS_REQUEST = 903;
 }

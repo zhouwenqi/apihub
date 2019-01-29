@@ -1,4 +1,4 @@
-package com.zhouwenqi.apihub.utils;
+package com.zhouwenqi.apihub.core.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

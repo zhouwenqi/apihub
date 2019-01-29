@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/apihub.iml" filepath="$PROJECT_DIR$/apihub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apihub-core/apihub-core.iml" filepath="$PROJECT_DIR$/apihub-core/apihub-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/apihub-server/apihub-server.iml" filepath="$PROJECT_DIR$/apihub-server/apihub-server.iml" />
     </modules>
   </component>

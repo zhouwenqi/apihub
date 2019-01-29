@@ -1,6 +1,6 @@
 package com.zhouwenqi.apihub.controller;
 
-import com.zhouwenqi.apihub.common.DateEditor;
+import com.zhouwenqi.apihub.core.common.DateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;

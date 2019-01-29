@@ -1,4 +1,4 @@
-package com.zhouwenqi.apihub.common;
+package com.zhouwenqi.apihub.core.common;
 
 import org.apache.commons.lang.time.DateUtils;
 

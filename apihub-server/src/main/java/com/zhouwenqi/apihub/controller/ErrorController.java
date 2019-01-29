@@ -1,7 +1,6 @@
 package com.zhouwenqi.apihub.controller;
 
-import com.zhouwenqi.apihub.model.response.ApihubModel;
-import com.zhouwenqi.apihub.model.response.ResponseModel;
+import com.zhouwenqi.apihub.core.model.response.ResponseModel;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;

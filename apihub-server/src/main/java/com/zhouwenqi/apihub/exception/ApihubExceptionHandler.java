@@ -1,6 +1,6 @@
 package com.zhouwenqi.apihub.exception;
 
-import com.zhouwenqi.apihub.model.response.ResponseModel;
+import com.zhouwenqi.apihub.core.model.response.ResponseModel;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

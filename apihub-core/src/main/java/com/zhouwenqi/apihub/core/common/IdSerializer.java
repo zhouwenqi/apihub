@@ -1,4 +1,4 @@
-package com.zhouwenqi.apihub.common;
+package com.zhouwenqi.apihub.core.common;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

@@ -1,7 +1,7 @@
 package com.zhouwenqi.apihub.exception;
 
-import com.zhouwenqi.apihub.model.response.ResponseModel;
-import com.zhouwenqi.apihub.model.response.ResultCode;
+import com.zhouwenqi.apihub.core.model.response.ResponseModel;
+import com.zhouwenqi.apihub.core.model.response.ResultCode;
 
 /**
  * Exception - Parameter error

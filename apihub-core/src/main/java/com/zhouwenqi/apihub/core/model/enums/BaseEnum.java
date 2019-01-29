@@ -1,4 +1,4 @@
-package com.zhouwenqi.apihub.model.enums;
+package com.zhouwenqi.apihub.core.model.enums;
 
 import org.springframework.util.ReflectionUtils;
 
@@ -12,6 +12,7 @@ public interface BaseEnum {
     String INDEX_NAME = "index";
     String TAG_NAME = "tag";
     default Integer getIndex(){
+
         Field field = ReflectionUtils.findField(this.getClass(),INDEX_NAME);
         if(field == null){
             return null;

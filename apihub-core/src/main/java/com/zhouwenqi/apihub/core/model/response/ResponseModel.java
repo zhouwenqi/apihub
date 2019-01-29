@@ -1,4 +1,4 @@
-package com.zhouwenqi.apihub.model.response;
+package com.zhouwenqi.apihub.core.model.response;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -90,6 +90,12 @@ public class ResponseModel implements Serializable{
     public static ResponseModel getNotAuthority(){
         return new ResponseModel(ResultCode.RESULT_NOT_AUTHORITY,"权限不够");
     }
+
+    /**
+     * 构建拒绝访问的模型
+     * @return
+     */
+    public static ResponseModel getAccessRequest() { return new ResponseModel(ResultCode.RESULT_ACCESS_REQUEST,"拒绝访问");}
 
 
     public int getCode() {

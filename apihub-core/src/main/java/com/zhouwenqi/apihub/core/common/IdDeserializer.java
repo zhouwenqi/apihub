@@ -1,4 +1,4 @@
-package com.zhouwenqi.apihub.common;
+package com.zhouwenqi.apihub.core.common;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
