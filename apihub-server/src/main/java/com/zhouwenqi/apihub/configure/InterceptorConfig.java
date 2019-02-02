@@ -1,7 +1,9 @@
 package com.zhouwenqi.apihub.configure;
 
 
+import com.zhouwenqi.apihub.interceptor.AccessInterceptor;
 import com.zhouwenqi.apihub.interceptor.OriginInterceptor;
+import com.zhouwenqi.apihub.interceptor.TokenInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -17,7 +19,13 @@ public class InterceptorConfig implements WebMvcConfigurer {
     OriginInterceptor originInterceptor(){
         return new OriginInterceptor();
     }
+    @Bean
+    TokenInterceptor tokenInterceptor(){ return new TokenInterceptor();}
+    @Bean
+    AccessInterceptor accessInterceptor(){ return new AccessInterceptor();}
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(originInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(tokenInterceptor()).addPathPatterns("/user/**").addPathPatterns("/project/**");
+        registry.addInterceptor(accessInterceptor()).addPathPatterns("/project/**");
     }
 }

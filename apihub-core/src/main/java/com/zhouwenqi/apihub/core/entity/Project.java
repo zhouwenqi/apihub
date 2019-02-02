@@ -19,7 +19,7 @@ public class Project extends BaseEntity {
     private String name;
     // 项目描述
     private String description;
-    // icon
+    // 项目图标
     private String icon;
     // 项目创建人
     @Indexed

@@ -7,15 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
  * Created by zhouwenqi on 2019/1/29.
  */
 public class Authority extends BaseEntity {
-    // 创建项目
-    @Field("cp")
-    private Boolean crateProject;
     // 修改项目
     @Field("mp")
     private Boolean modifyProject;
-    // 删除项目
-    @Field("dp")
-    private Boolean deleteProject;
     // 创建目录
     @Field("cd")
     private Boolean createDirectory;
@@ -44,28 +38,12 @@ public class Authority extends BaseEntity {
     @Field("dm")
     private Boolean deleteMember;
 
-    public Boolean getCrateProject() {
-        return crateProject;
-    }
-
-    public void setCrateProject(Boolean crateProject) {
-        this.crateProject = crateProject;
-    }
-
     public Boolean getModifyProject() {
         return modifyProject;
     }
 
     public void setModifyProject(Boolean modifyProject) {
         this.modifyProject = modifyProject;
-    }
-
-    public Boolean getDeleteProject() {
-        return deleteProject;
-    }
-
-    public void setDeleteProject(Boolean deleteProject) {
-        this.deleteProject = deleteProject;
     }
 
     public Boolean getCreateDirectory() {

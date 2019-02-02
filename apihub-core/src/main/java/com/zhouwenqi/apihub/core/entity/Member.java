@@ -25,6 +25,8 @@ public class Member extends BaseEntity {
     private RoleLevel roleLevel;
     // 权限
     private Authority authority;
+    // 关联用户
+    private User user;
 
     @JsonSerialize(using = IdSerializer.class)
     public ObjectId getProjectId() {
@@ -60,5 +62,13 @@ public class Member extends BaseEntity {
 
     public void setAuthority(Authority authority) {
         this.authority = authority;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -21,7 +21,7 @@ public class ReqRegister extends ReqBase {
     private String nickName;
     // 性别
     private String gender;
-    // 联系电话
+    // 手机号码
     @Pattern(regexp = "^(((1[0-9]))+\\d{9})$",message = "手机号码格式不正确")
     private String mobile;
     // 验证码

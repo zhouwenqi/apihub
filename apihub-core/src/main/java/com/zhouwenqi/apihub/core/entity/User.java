@@ -1,6 +1,12 @@
 package com.zhouwenqi.apihub.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.zhouwenqi.apihub.core.common.IdDeserializer;
+import com.zhouwenqi.apihub.core.common.IdSerializer;
 import com.zhouwenqi.apihub.core.model.enums.UserStatus;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,6 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Entity - 用户
  * Created by zhouwenqi on 2019/1/28.
  */
+@JsonIgnoreProperties({"pwd"})
 @Document(collection = "user")
 public class User extends BaseEntity {
     // 用户名
@@ -20,7 +27,7 @@ public class User extends BaseEntity {
     // 性别
     private String gender;
     // 照片
-    private String photo;
+    private ObjectId photo;
     // 邮箱
     private String email;
     // 手机号
@@ -60,11 +67,13 @@ public class User extends BaseEntity {
         this.gender = gender;
     }
 
-    public String getPhoto() {
+    @JsonSerialize(using = IdSerializer.class)
+    public ObjectId getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    @JsonDeserialize(using = IdDeserializer.class)
+    public void setPhoto(ObjectId photo) {
         this.photo = photo;
     }
 

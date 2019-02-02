@@ -20,4 +20,16 @@ public class ApihubUtils {
         }
         return sb.toString();
     }
+
+    /**
+     * 获取文件名小写扩展名
+     * @param fileName 文件名
+     * @return
+     */
+    public static String getFileSuffix(String fileName){
+        if(null==fileName || !fileName.contains(".")){
+            return null;
+        }
+        return fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
+    }
 }
