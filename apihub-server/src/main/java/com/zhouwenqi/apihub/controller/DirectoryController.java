@@ -7,6 +7,7 @@ import com.zhouwenqi.apihub.core.entity.User;
 import com.zhouwenqi.apihub.core.model.request.ReqDirectory;
 import com.zhouwenqi.apihub.core.model.request.ReqDirectorySort;
 import com.zhouwenqi.apihub.core.model.response.ResponseModel;
+import com.zhouwenqi.apihub.core.model.response.RspDirectory;
 import com.zhouwenqi.apihub.exception.ApihubNotAuthorityException;
 import com.zhouwenqi.apihub.exception.ApihubNotParameterException;
 import com.zhouwenqi.apihub.exception.ApihubParameterErrorException;
@@ -17,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Controller - 目录
@@ -29,6 +31,16 @@ public class DirectoryController extends TokenController {
     private DirectoryService directoryService;
     @Autowired
     private MemberService memberService;
+
+    @GetMapping("directorys")
+    @ResponseBody
+    public ResponseModel dirctorys(){
+        Project project = getProject();
+        List<RspDirectory> directorys = directoryService.findByProjectId(project.getId());
+        ResponseModel responseModel = ResponseModel.getSuccess();
+        responseModel.addData("directorys",directorys);
+        return responseModel;
+    }
     /**
      * 创建目录
      * @param reqDirectory 目录信息
@@ -119,6 +131,11 @@ public class DirectoryController extends TokenController {
         return responseModel;
     }
 
+    /**
+     * 目录排序
+     * @param reqDirectorySort 排序信息
+     * @return
+     */
     @PutMapping("directory/sort")
     @ResponseBody
     public ResponseModel sort(ReqDirectorySort reqDirectorySort){

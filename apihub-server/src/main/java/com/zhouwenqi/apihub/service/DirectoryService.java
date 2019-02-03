@@ -1,16 +1,25 @@
 package com.zhouwenqi.apihub.service;
 
 import com.zhouwenqi.apihub.core.entity.Directory;
+import com.zhouwenqi.apihub.core.entity.Member;
+import com.zhouwenqi.apihub.core.entity.Project;
 import com.zhouwenqi.apihub.core.model.request.ReqDirectorySort;
+import com.zhouwenqi.apihub.core.model.response.RspDirectory;
 import com.zhouwenqi.apihub.core.repository.DirectoryRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.LookupOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Service - 目录
@@ -82,9 +91,13 @@ public class DirectoryService extends BaseService<Directory> {
         return directory;
     }
 
+    /**
+     * 目录排序
+     * @param reqDirectorySort 排序信息
+     * @param projectId 项目id
+     */
     public void sort(ReqDirectorySort reqDirectorySort, ObjectId projectId){
         int i = 0;
-        System.out.println("size:"+reqDirectorySort.getIds().length);
         for(String id:reqDirectorySort.getIds()){
             Directory directory = findById(id);
 
@@ -92,10 +105,28 @@ public class DirectoryService extends BaseService<Directory> {
                 break;
             }
             i++;
-            System.out.println("id:"+id+", sort:"+i);
             directory.setIdx(i);
+            directory.setDirectoryId(reqDirectorySort.getDirectionId());
             directory.setEditDate(new Date());
             directoryRepository.save(directory);
         }
+    }
+
+    /**
+     * 获取项目目录列表
+     * @param projectId 项目id
+     * @return
+     */
+    public List<RspDirectory> findByProjectId(ObjectId projectId){
+        Criteria criteria = Criteria.where("projectId").is(projectId);
+        criteria.and("directoryId").exists(false);
+        List<AggregationOperation> operations = new ArrayList<>();
+        operations.add(Aggregation.sort(new Sort(Sort.Direction.ASC,"idx")));
+        operations.add(Aggregation.match(criteria));
+        operations.add(Aggregation.lookup("directory","_id","directoryId","directorys"));
+        Aggregation aggregation = Aggregation.newAggregation(operations);
+        AggregationResults<RspDirectory> results = mongoTemplate.aggregate(aggregation,"directory",RspDirectory.class);
+        List<RspDirectory> list = results.getMappedResults();
+        return null == list ? new ArrayList<RspDirectory>() : list;
     }
 }
